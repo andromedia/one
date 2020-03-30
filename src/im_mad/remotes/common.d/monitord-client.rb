@@ -220,7 +220,7 @@ xml_txt = STDIN.read
 begin
     hyperv = ARGV[0].split(' ')[0]
 
-    if ['az', 'ec2', 'packet'].include? hyperv
+    if ['az', 'ec2', 'one', 'packet'].include? hyperv
         xml_txt = Base64.decode64(xml_txt)
     end
 
@@ -253,7 +253,7 @@ begin
         }
     }
 
-    if ! ['az', 'ec2', 'packet'].include? hyperv
+    if ! ['az', 'ec2', 'one', 'packet'].include? hyperv
         probes[:beacon_host_udp] = {
             :period => config.elements['PROBES_PERIOD/BEACON_HOST'].text.to_s,
             :path => 'host/beacon'

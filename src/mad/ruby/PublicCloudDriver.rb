@@ -84,6 +84,7 @@ class PublicCloudDriver
 
         data = "HYPERVISOR=#{@hypervisor}\n"
         data << "PUBLIC_CLOUD=YES\n"
+        data << "PRIORITY=-1\n"
         data << "TOTALCPU=#{total_cpu}\n"
         data << "TOTALMEMORY=#{total_mem}\n"
 
@@ -146,8 +147,8 @@ class PublicCloudDriver
     end
 
     # Hash to ONE template format
-    def hash_to_template(h, pref = '', post = '')
-        tmpl = h.to_a.map {|e| "#{e[0].to_s.upcase}=\"#{e[1]}\"" }.join(', ')
+    def hash_to_template(h, pref = '', post = '', delim=', ')
+        tmpl = h.to_a.map {|e| "#{e[0].to_s.upcase}=\"#{e[1]}\"" }.join(delim)
         pref + tmpl + post
     end
 end
